@@ -56,7 +56,7 @@ class SpaceAdvance(LineSortRule):
             else:
                 return self.order.index(line1[i]) - self.order.index(line2[i])
         return len(line1)-len(line2)
-            
+
 
 class LineSearchRule(object):
     def __init__(self):
@@ -78,6 +78,15 @@ class LSearch_1(LineSearchRule):
             if flag == 1:
                 result_lines.append(line)
         return result_lines
+
+class LineSearchContext(object):
+    def __init__(self,search_rule_num):
+        if search_rule_num == 1:
+            self.search_rule = LSearch_1()
+        else:
+            pass
+    def search(self,lines,words):
+        return self.search_rule.search(lines,words)
             
 
 class Text(object):
@@ -92,5 +101,5 @@ class Text(object):
         self.lines = sorted(self.lines, key=cmp_to_key(self.sort_rule.cmp))
 
     def search(self,words):
-        self.search_rule = LSearch_1()
-        return self.search_rule.search(self.lines,words)
+        self.search_context = LineSearchContext(1)
+        return self.search_context.search(self.lines,words)
