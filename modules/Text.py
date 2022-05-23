@@ -1,6 +1,6 @@
 from functools import cmp_to_key
-from LineSortRule import SpaceAdvance
-from LineSearchRule import LineSearchContext
+from LinesSortRule import SpaceAdvance
+from LinesSearchRule import LinesSearchContext
 
 class Text(object):
     def __init__(self):
@@ -14,5 +14,5 @@ class Text(object):
         self.lines = sorted(self.lines, key=cmp_to_key(self.sort_rule.cmp))
 
     def search(self,words):
-        self.search_context = LineSearchContext(1)
+        self.search_context = LinesSearchContext(1)
         return self.search_context.search(self.lines,words)

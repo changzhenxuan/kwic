@@ -32,13 +32,13 @@ def cmp(t1, t2):
 l2 = sorted(l, key=cmp_to_key(cmp))
 print_list(l2)
 """
-class LineSortRule(object):
+class LinesSortRule(object):
     def __init__(self):
         raise NotImplementedError
     def cmp(self):
         pass
 
-class SpaceAdvance(LineSortRule):
+class SpaceAdvance(LinesSortRule):
     def __init__(self):
         #初始化字符优先表
         self.order = [' ']
@@ -58,36 +58,58 @@ class SpaceAdvance(LineSortRule):
         return len(line1)-len(line2)
 
 
+class LinesSearchRule(object):
+    def __init__(self):
+        raise NotImplementedError
+    def search(self,lines,words):
+        result_lines = []
+        for line in lines:
+            if self.lsearch_rule.search(line,words):
+                result_lines.append(line)
+        return result_lines
+
+class LsSearch_notin(LinesSearchRule):
+    def __init__(self):
+        self.lsearch_rule = LSearch_notin()
+
+class LsSearch_re(LinesSearchRule):
+    def __init__(self):
+        self.lsearch_rule = LSearch_re()
+
+class LinesSearchContext(object):
+    def __init__(self,search_rule_num=0):
+        if search_rule_num == 0:
+            self.search_rule = LsSearch_notin()
+        elif search_rule_num == 1:
+            self.search_rule = LsSearch_re()
+    def search(self,lines,words):
+        return self.search_rule.search(lines,words)
+            
+
 class LineSearchRule(object):
     def __init__(self):
         raise NotImplementedError
     def search(self):
         pass
 
-class LSearch_1(LineSearchRule):
+class LSearch_notin(LineSearchRule):
     def __init__(self):
         pass
-    def search(self,lines,words):
-        result_lines = []
-        for line in lines:
-            flag = 1
-            for word in words:
-                if word not in line.words():
-                    flag = 0
-                    break
-            if flag == 1:
-                result_lines.append(line)
-        return result_lines
+    def search(self,line,words):
+        for word in words:
+            if word not in line.words:
+                return False
+        return True
 
-class LineSearchContext(object):
-    def __init__(self,search_rule_num):
-        if search_rule_num == 1:
-            self.search_rule = LSearch_1()
-        else:
-            pass
-    def search(self,lines,words):
-        return self.search_rule.search(lines,words)
-            
+class LSearch_re(LineSearchRule):
+    def __init__(self):
+        pass
+    def search(self,line,words):
+        for word in words:
+            if re.search(word,line.sentence)==None:
+                return False
+        return True
+
 
 class Text(object):
     def __init__(self):
@@ -101,5 +123,5 @@ class Text(object):
         self.lines = sorted(self.lines, key=cmp_to_key(self.sort_rule.cmp))
 
     def search(self,words):
-        self.search_context = LineSearchContext(1)
+        self.search_context = LinesSearchContext(1)
         return self.search_context.search(self.lines,words)
