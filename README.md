@@ -8,36 +8,65 @@ One project in OO class
 
 > 由Linux tree命令生成
 
-kwic
+**kwic**
+
 ├── README.md
+
 ├── UI
-│   ├── Components_py		
-│   │   ├── Components.py   （连接UI和业务）
-│   │   ├── Help.py					(由help.ui文件转换所得)
-│   │   ├── MainWindow.py 	(由MainWindow.ui文件转换所得)
-│   │   ├── Setting.py				(由setting.ui文件转换所得)
-│   │   ├── __pycache__			（一些运行文件）
-│   │   │   ├── Components.cpython-39.pyc
-│   │   │   ├── Help.cpython-39.pyc
-│   │   │   ├── MainWindow.cpython-39.pyc
-│   │   │   └── Setting.cpython-39.pyc
-│   │   └── app.py
-│   └── ui 				(由qtdesigner生成)
-│       ├── MainWindow.ui
-│       ├── help.ui
-│       └── setting.ui
-├── modules				（业务类）
-│   ├── Line.py
-│   ├── LineSearchRule.py
-│   ├── LinesSearchRule.py
-│   ├── LinesSortRule.py
-│   └── Text.py
-└── profiles		（一些可能用到的配置文件）
-    ├── AppConfig.py
-    ├── Untitled Diagram.drawio
-    ├── Untitled Diagram.drawio.png
-    ├── config.xml
-    └── dev.py
+
+│  ├── Components_py    
+
+│  │  ├── Components.py  （连接UI和业务）
+
+│  │  ├── Help.py         (由help.ui文件转换所得)
+
+│  │  ├── MainWindow.py  (由MainWindow.ui文件转换所得)
+
+│  │  ├── Setting.py        (由setting.ui文件转换所得)
+
+│  │  ├── **__****pycache****__**     （一些运行文件）
+
+│  │  │  ├── Components.cpython-39.pyc
+
+│  │  │  ├── Help.cpython-39.pyc
+
+│  │  │  ├── MainWindow.cpython-39.pyc
+
+│  │  │  └── Setting.cpython-39.pyc
+
+│  │  └── app.py
+
+│  └── ui        (由qtdesigner生成)
+
+│    ├── MainWindow.ui
+
+│    ├── help.ui
+
+│    └── setting.ui
+
+├── modules       （业务类）
+
+│  ├── Line.py
+
+│  ├── LineSearchRule.py
+
+│  ├── LinesSearchRule.py
+
+│  ├── LinesSortRule.py
+
+│  └── Text.py
+
+└── profiles     （一些可能用到的配置文件）
+
+  ├── AppConfig.py
+
+  ├── Untitled Diagram.drawio
+
+  ├── Untitled Diagram.drawio.png
+
+  ├── config.xml
+
+  └── dev.py
 
 ------------
 
