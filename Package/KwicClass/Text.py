@@ -1,6 +1,6 @@
 from functools import cmp_to_key
-from Package.KwicClass.LinesSortRule import SpaceAdvance
-from Package.KwicClass.LinesSearchRule import LinesSearchContext
+from Package.KwicClass.LinesSortRule_Context import LinesSortContext
+from Package.KwicClass.LinesSearchRule_Context import LinesSearchContext
 
 class Text(object):
     def __init__(self):
@@ -16,13 +16,17 @@ class Text(object):
         for line in self.lines:
             line.cyclicShift()
 
-    def sort(self):
-        self.sort_rule = SpaceAdvance() #或许可以改成工厂模式,现在这是策略模式？
-        self.lines = sorted(self.lines, key=cmp_to_key(self.sort_rule.cmp))
+    def setSortRule(self,sort_rule):
+        self.sort_context = LinesSortContext(sort_rule)
 
-    def search(self,words):
-        self.search_context = LinesSearchContext(1)
-        return self.search_context.search(self.lines,words)
+    def sort(self):
+        self.lines = sorted(self.lines, key=cmp_to_key(self.sort_context.cmp))
+
+    def setSearchRule(self,search_rule):
+        self.search_context = LinesSearchContext(search_rule)
+
+    def search(self,keywords):
+        return self.search_context.search(self.lines,keywords)
 
     def toString(self):
         sentences = []

@@ -31,23 +31,23 @@ class Ui_Dialog_setting(object):
 
         self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
 
-        self.comboBox_2 = QComboBox(Dialog)
-        self.comboBox_2.addItem("")
-        self.comboBox_2.setObjectName(u"comboBox_2")
+        self.comboBox_sort = QComboBox(Dialog)
+        self.comboBox_sort.addItem("")
+        self.comboBox_sort.setObjectName(u"comboBox_sort")
 
-        self.gridLayout.addWidget(self.comboBox_2, 0, 1, 1, 1)
+        self.gridLayout.addWidget(self.comboBox_sort, 0, 1, 1, 1)
 
         self.label_2 = QLabel(Dialog)
         self.label_2.setObjectName(u"label_2")
 
         self.gridLayout.addWidget(self.label_2, 1, 0, 1, 1)
 
-        self.comboBox = QComboBox(Dialog)
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.setObjectName(u"comboBox")
+        self.comboBox_search = QComboBox(Dialog)
+        self.comboBox_search.addItem("")
+        self.comboBox_search.addItem("")
+        self.comboBox_search.setObjectName(u"comboBox_search")
 
-        self.gridLayout.addWidget(self.comboBox, 1, 1, 1, 1)
+        self.gridLayout.addWidget(self.comboBox_search, 1, 1, 1, 1)
 
         self.buttonBox = QDialogButtonBox(Dialog)
         self.buttonBox.setObjectName(u"buttonBox")
@@ -67,11 +67,11 @@ class Ui_Dialog_setting(object):
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
         self.label.setText(QCoreApplication.translate("Dialog", u"\u6392\u5e8f\u7b97\u6cd5\uff1a   ", None))
-        self.comboBox_2.setItemText(0, QCoreApplication.translate("Dialog", u"SpaceAdvance", None))
+        self.comboBox_sort.setItemText(0, QCoreApplication.translate("Dialog", u"SpaceAdvance", None))
 
         self.label_2.setText(QCoreApplication.translate("Dialog", u"\u641c\u7d22\u7b97\u6cd5\uff1a    ", None))
-        self.comboBox.setItemText(0, QCoreApplication.translate("Dialog", u"LsSearch_notin", None))
-        self.comboBox.setItemText(1, QCoreApplication.translate("Dialog", u"LsSearch_re", None))
+        self.comboBox_search.setItemText(0, QCoreApplication.translate("Dialog", u"LsSearch_notin", None))
+        self.comboBox_search.setItemText(1, QCoreApplication.translate("Dialog", u"LsSearch_re", None))
 
     # retranslateUi
 

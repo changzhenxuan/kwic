@@ -1,4 +1,5 @@
 from Package.KwicClass.LineSearchRule import LSearch_notin,LSearch_re
+from Package.KwicClass import LinesSearchRule_Context
 #策略模式：查询策略/规则
 class LinesSearchRule(object):
     def __init__(self):
@@ -20,10 +21,8 @@ class LsSearch_re(LinesSearchRule):
 
 #策略模式：查询规则上下文
 class LinesSearchContext(object):
-    def __init__(self,search_rule_num=0):
-        if search_rule_num == 0:
-            self.search_rule = LsSearch_notin()
-        elif search_rule_num == 1:
-            self.search_rule = LsSearch_re()
+    def __init__(self,search_rule):
+        self.search_rule = getattr(LinesSearchRule_Context,search_rule,None)()
+        print("当前搜索算法：{}".format(search_rule))
     def search(self,lines,words):
         return self.search_rule.search(lines,words)

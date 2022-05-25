@@ -1,3 +1,5 @@
+from Package.KwicClass import LinesSortRule_Context
+
 class LinesSortRule(object):
     def __init__(self):
         raise NotImplementedError
@@ -25,3 +27,10 @@ class SpaceAdvance(LinesSortRule):
             else:
                 return self.order.index(s1[i]) - self.order.index(s2[i])
         return len(s1)-len(s2)
+
+class LinesSortContext(object):
+    def __init__(self,sort_rule):
+        self.sort_rule = getattr(LinesSortRule_Context,sort_rule,None)()
+        print("当前排序算法：{}".format(sort_rule))
+    def cmp(self):
+        return self.sort_rule

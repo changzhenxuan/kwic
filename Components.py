@@ -12,7 +12,9 @@ class KwicMainWindow(QtWidgets.QMainWindow):#继承QMainWindow
     def __init__(self):
         super().__init__()
         self.ui = Ui_MainWindow_kwic()
-
+        self.help_dialog = HelpDialog()
+        self.setting_dialog = SettingDialog()
+        
         self.ui.setupUi(self)
 
         self.ui_ButtonActivate()
@@ -23,6 +25,11 @@ class KwicMainWindow(QtWidgets.QMainWindow):#继承QMainWindow
         self.searched_text = Text()
         self.input_plaintext = ''
         self.output_plaintext = ''
+        #算法设置
+        self.sort_rule = self.setting_dialog.ui.comboBox_sort.currentText()
+        print(self.sort_rule)
+        self.search_rule = self.setting_dialog.ui.comboBox_search.currentText()
+        print(self.search_rule)
         
     def ui_ButtonActivate(self):
         self.ui.pushButton_cyclicshift.clicked.connect(self.cyclicShift)
@@ -38,12 +45,10 @@ class KwicMainWindow(QtWidgets.QMainWindow):#继承QMainWindow
     """打开子窗口"""
     def getHelpDialog(self):
         """帮助"""
-        self.help_dialog = HelpDialog()
         self.help_dialog.show()
         
     def getSettingDialog(self):
         """设置"""
-        self.setting_dialog = SettingDialog()
         self.setting_dialog.show()
 
     """导入文件,有待完善"""
@@ -93,13 +98,19 @@ class KwicMainWindow(QtWidgets.QMainWindow):#继承QMainWindow
     def sort(self):
         if self.cyclicshift_text.toString() == '':
             self.cyclicShift()
+
+        self.sort_rule = self.setting_dialog.ui.comboBox_sort.currentText()
+        self.cyclicShift_text.setSortRule(self.sort_rule)
         self.cyclicshift_text.sort()
         self.ui.plainTextEdit_output.setPlainText(self.cyclicshift_text.toString())
 
     def search(self):
         keywords = re.split(r'[ ]+',self.ui.lineEdit_keywords.text())
-        print(keywords)
+
+        self.search_rule = self.setting_dialog.ui.comboBox_search.currentText()
+        self.cyclicshift_text.setSearchRule(self.search_rule)
         searched_lines = self.cyclicshift_text.search(keywords)
+
         self.searched_text.lines = searched_lines
         self.ui.plainTextEdit_output.setPlainText(self.searched_text.toString())
 
