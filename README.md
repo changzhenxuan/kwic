@@ -50,15 +50,15 @@ One project in OO class
 
 └── profiles
 
-  ├── AppConfig.py
+│    ├── AppConfig.py
 
-  ├── Untitled Diagram.drawio
+│    ├── Untitled Diagram.drawio
 
-  ├── Untitled Diagram.drawio.png
+│    ├── Untitled Diagram.drawio.png
 
-  ├── config.xml
+│    ├── config.xml
 
-  └── dev.py
+│    └── dev.py
 
 ------------
 
