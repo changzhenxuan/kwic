@@ -1,7 +1,13 @@
+import re
+
 from PySide6 import QtWidgets
-from MainWindow import Ui_MainWindow_kwic
-from Help import Ui_Dialog_help
-from Setting import Ui_Dialog_setting
+from Package.UI.MainWindow import Ui_MainWindow_kwic
+from Package.UI.Help import Ui_Dialog_help
+from Package.UI.Setting import Ui_Dialog_setting
+
+from Package.KwicClass.Line import Line
+from Package.KwicClass.Text import Text
+
 class KwicMainWindow(QtWidgets.QMainWindow):#继承QMainWindow
     def __init__(self):
         super().__init__()
@@ -11,9 +17,17 @@ class KwicMainWindow(QtWidgets.QMainWindow):#继承QMainWindow
 
         self.ui_ButtonActivate()
         self.ui_ActionActivate()
-    
+
+        self.text = Text()
+        self.cyclicshift_text = Text()
+        self.searched_text = Text()
+        self.input_plaintext = ''
+        self.output_plaintext = ''
+        
     def ui_ButtonActivate(self):
-        pass
+        self.ui.pushButton_cyclicshift.clicked.connect(self.cyclicShift)
+        self.ui.pushButton_sort.clicked.connect(self.sort)
+        self.ui.pushButton_search.clicked.connect(self.search)
 
     def ui_ActionActivate(self):
         self.ui.action_setting.triggered.connect(self.getSettingDialog)
@@ -55,17 +69,41 @@ class KwicMainWindow(QtWidgets.QMainWindow):#继承QMainWindow
         except:
             pass
 
+    """getText|updateText,有待优化"""
+    def updateText(self):
+        self.text.clear()
+        text = self.ui.plainTextEdit_input.toPlainText()
+        for sentence in text.split('\n'):
+            line = Line(sentence)
+            self.text.addLine(line)
+
     """按钮功能函数"""
     def cyclicShift(self):
-        pass
+        """self.text ---> self.cyclicshift_text"""
+        self.updateText()       #更新self.text
+        self.text.cyclicShift() #调用循环移位
+        #结果输出到plainTextEdit_output,后面可以尝试实现实时更新
+        self.output_plaintext = ''
+        self.cyclicshift_text.clear()
+        for line in self.text.lines:
+            for sentence in line.shift_sentences:
+                self.cyclicshift_text.addLine(Line(sentence))
+        self.ui.plainTextEdit_output.setPlainText(self.cyclicshift_text.toString())
 
     def sort(self):
-        pass
+        if self.cyclicshift_text.toString() == '':
+            self.cyclicShift()
+        self.cyclicshift_text.sort()
+        self.ui.plainTextEdit_output.setPlainText(self.cyclicshift_text.toString())
 
     def search(self):
-        pass
+        keywords = re.split(r'[ ]+',self.ui.lineEdit_keywords.text())
+        print(keywords)
+        searched_lines = self.cyclicshift_text.search(keywords)
+        self.searched_text.lines = searched_lines
+        self.ui.plainTextEdit_output.setPlainText(self.searched_text.toString())
 
-#改成单例模式？？
+#改成单例模式？？不用，pyside自动支持了
 class HelpDialog(QtWidgets.QDialog):
     def __init__(self):
         super().__init__()
@@ -79,6 +117,3 @@ class SettingDialog(QtWidgets.QDialog):
         # 设置界面为我们生成的界面
         self.ui = Ui_Dialog_setting()
         self.ui.setupUi(self)
-
-
-

@@ -1,4 +1,4 @@
-from LineSearchRule import LSearch_notin,LSearch_re
+from Package.KwicClass.LineSearchRule import LSearch_notin,LSearch_re
 #策略模式：查询策略/规则
 class LinesSearchRule(object):
     def __init__(self):

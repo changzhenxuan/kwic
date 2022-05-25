@@ -16,9 +16,12 @@ class SpaceAdvance(LinesSortRule):
     def cmp(self,line1,line2):
         #正排序，小的在前
         #空格优先 => 当line2=line1+xxx时，line1优先
-        n = min(len(line1), len(line2))
+        s1,s2 = line1.sentence,line2.sentence
+        if s1 == '': return 1
+        if s2 == '': return -1
+        n = min(len(s1), len(s2))
         for i in range(n):
-            if line1[i] == line2[i]:continue
+            if s1[i] == s2[i]:continue
             else:
-                return self.order.index(line1[i]) - self.order.index(line2[i])
-        return len(line1)-len(line2)
+                return self.order.index(s1[i]) - self.order.index(s2[i])
+        return len(s1)-len(s2)
