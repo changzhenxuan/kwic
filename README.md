@@ -22,9 +22,9 @@ One project in OO class
 
 │  │  ├── LineSearchRule.py
 
-│  │  ├── LinesSearchRule.py
+│  │  ├── LinesSearchRule_Context.py
 
-│  │  ├── LinesSortRule.py
+│  │  ├── LinesSortRule_Context.py
 
 │  │  ├── Text.py
 
