@@ -4,7 +4,7 @@ from Package.KwicClass import LinesSearchRule_Context
 class LinesSearchRule(object):
     def __init__(self):
         raise NotImplementedError
-    def search(self,lines,words):
+    def search(self,lines:list,words:list)->list:
         result_lines = []
         for line in lines:
             if self.lsearch_rule.search(line,words):
@@ -29,5 +29,5 @@ class LinesSearchContext(object):
     def __init__(self,search_rule):
         self.search_rule = getattr(LinesSearchRule_Context,search_rule,None)()
         print("当前搜索算法：{}".format(search_rule))
-    def search(self,lines,words):
+    def search(self,lines:list,words:list)->list:
         return self.search_rule.search(lines,words)

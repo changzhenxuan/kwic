@@ -1,4 +1,7 @@
 import re
+
+from Package.KwicClass.Line import Line
+
 class LineSearchRule(object):
     def __init__(self):
         raise NotImplementedError
@@ -8,7 +11,7 @@ class LineSearchRule(object):
 class LSearch_notin(LineSearchRule):
     def __init__(self):
         pass
-    def search(self,line,keywords):
+    def search(self,line:Line,keywords:list)->bool:
         for word in keywords:
             if word not in line.words:
                 return False
@@ -17,7 +20,7 @@ class LSearch_notin(LineSearchRule):
 class LSearch_re(LineSearchRule):
     def __init__(self):
         pass
-    def search(self,line,keywords):
+    def search(self,line:Line,keywords:list)->bool:
         for word in keywords:
             if re.search(word,line.sentence)==None:
                 return False

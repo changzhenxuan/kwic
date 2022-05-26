@@ -1,6 +1,6 @@
 import re
 class Line(object):
-    def __init__(self,sentence):
+    def __init__(self,sentence:str):
         self.sentence = re.sub(r'[ ]+',' ',sentence.strip())
 
         self.words = self.get_words()
