@@ -66,7 +66,7 @@ class Ui_Dialog_setting(object):
     # setupUi
 
     def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
+        Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Setting", None))
         self.label.setText(QCoreApplication.translate("Dialog", u"\u6392\u5e8f\u7b97\u6cd5\uff1a   ", None))
         self.comboBox_sort.setItemText(0, QCoreApplication.translate("Dialog", u"SpaceAdvance", None))
 

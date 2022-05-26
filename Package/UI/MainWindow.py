@@ -116,7 +116,7 @@ class Ui_MainWindow_kwic(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Kwic", None))
         self.action_search.setText(QCoreApplication.translate("MainWindow", u"\u67e5\u627e(&F)", None))
         self.action_inputfile.setText(QCoreApplication.translate("MainWindow", u"\u5bfc\u5165", None))
         self.action_outputfile.setText(QCoreApplication.translate("MainWindow", u"\u5bfc\u51fa", None))

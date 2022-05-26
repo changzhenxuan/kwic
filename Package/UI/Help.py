@@ -55,7 +55,7 @@ class Ui_Dialog_help(object):
     # setupUi
 
     def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
+        Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Help", None))
         self.plainTextEdit.setPlainText(QCoreApplication.translate("Dialog", u"Kwic\u7cfb\u7edf\uff0c\u8be6\u89c1\uff1a\n"
 "https://github.com/changzhenxuan/kwic", None))
     # retranslateUi

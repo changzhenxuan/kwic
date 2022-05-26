@@ -1,6 +1,7 @@
 import re
 
 from PySide6 import QtWidgets
+from PySide6.QtGui import QIcon
 from Package.UI.MainWindow import Ui_MainWindow_kwic
 from Package.UI.Help import Ui_Dialog_help
 from Package.UI.Setting import Ui_Dialog_setting
@@ -12,10 +13,12 @@ class KwicMainWindow(QtWidgets.QMainWindow):#继承QMainWindow
     def __init__(self):
         super().__init__()
         self.ui = Ui_MainWindow_kwic()
+        self.ui.setupUi(self)
+
+        self.setWindowIcon(QIcon('./assets/logo.png'))
+
         self.help_dialog = HelpDialog()
         self.setting_dialog = SettingDialog()
-        
-        self.ui.setupUi(self)
 
         self.ui_ButtonActivate()
         self.ui_ActionActivate()
@@ -120,6 +123,7 @@ class HelpDialog(QtWidgets.QDialog):
         super().__init__()
         # 设置界面为我们生成的界面
         self.ui = Ui_Dialog_help()
+        self.setWindowIcon(QIcon('./assets/help.png'))
         self.ui.setupUi(self)
 
 class SettingDialog(QtWidgets.QDialog):
@@ -127,4 +131,5 @@ class SettingDialog(QtWidgets.QDialog):
         super().__init__()
         # 设置界面为我们生成的界面
         self.ui = Ui_Dialog_setting()
+        self.setWindowIcon(QIcon('./assets/setting.png'))
         self.ui.setupUi(self)
