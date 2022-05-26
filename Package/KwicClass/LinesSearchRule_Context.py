@@ -1,4 +1,4 @@
-from Package.KwicClass.LineSearchRule import LSearch_notin,LSearch_re
+from Package.KwicClass.LineSearchRule import LSearch_notin,LSearch_re,LSearch_kmp
 from Package.KwicClass import LinesSearchRule_Context
 #策略模式：查询策略/规则
 class LinesSearchRule(object):
@@ -18,6 +18,11 @@ class LsSearch_notin(LinesSearchRule):
 class LsSearch_re(LinesSearchRule):
     def __init__(self):
         self.lsearch_rule = LSearch_re()
+
+"""kmp搜索算法,用以测试系统可扩展性,2022-5-26"""
+class LsSearch_kmp(LinesSearchRule):
+    def __init__(self):
+        self.lsearch_rule = LSearch_kmp()
 
 #策略模式：查询规则上下文
 class LinesSearchContext(object):

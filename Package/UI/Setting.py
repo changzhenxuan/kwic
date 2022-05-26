@@ -45,6 +45,7 @@ class Ui_Dialog_setting(object):
         self.comboBox_search = QComboBox(Dialog)
         self.comboBox_search.addItem("")
         self.comboBox_search.addItem("")
+        self.comboBox_search.addItem("")
         self.comboBox_search.setObjectName(u"comboBox_search")
 
         self.gridLayout.addWidget(self.comboBox_search, 1, 1, 1, 1)
@@ -72,6 +73,7 @@ class Ui_Dialog_setting(object):
         self.label_2.setText(QCoreApplication.translate("Dialog", u"\u641c\u7d22\u7b97\u6cd5\uff1a    ", None))
         self.comboBox_search.setItemText(0, QCoreApplication.translate("Dialog", u"LsSearch_notin", None))
         self.comboBox_search.setItemText(1, QCoreApplication.translate("Dialog", u"LsSearch_re", None))
+        self.comboBox_search.setItemText(2, QCoreApplication.translate("Dialog", u"LsSearch_kmp", None))
 
     # retranslateUi
 
