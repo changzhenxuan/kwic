@@ -20,7 +20,7 @@ class Text(object):
         self.sort_context = LinesSortContext(sort_rule)
 
     def sort(self):
-        self.lines = sorted(self.lines, key=cmp_to_key(self.sort_context.cmp))
+        self.lines = sorted(self.lines, key=cmp_to_key(self.sort_context.getCmp()))
 
     def setSearchRule(self,search_rule):
         self.search_context = LinesSearchContext(search_rule)

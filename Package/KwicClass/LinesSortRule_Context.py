@@ -32,5 +32,5 @@ class LinesSortContext(object):
     def __init__(self,sort_rule):
         self.sort_rule = getattr(LinesSortRule_Context,sort_rule,None)()
         print("当前排序算法：{}".format(sort_rule))
-    def cmp(self):
-        return self.sort_rule
+    def getCmp(self):
+        return self.sort_rule.cmp

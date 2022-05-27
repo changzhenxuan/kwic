@@ -103,7 +103,7 @@ class KwicMainWindow(QtWidgets.QMainWindow):#继承QMainWindow
             self.cyclicShift()
 
         self.sort_rule = self.setting_dialog.ui.comboBox_sort.currentText()
-        self.cyclicShift_text.setSortRule(self.sort_rule)
+        self.cyclicshift_text.setSortRule(self.sort_rule)
         self.cyclicshift_text.sort()
         self.ui.plainTextEdit_output.setPlainText(self.cyclicshift_text.toString())
 
