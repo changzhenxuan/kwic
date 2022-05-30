@@ -5,6 +5,8 @@ from Package.KwicClass.LinesSearchRule_Context import LinesSearchContext
 class Text(object):
     def __init__(self):
         self.lines = []
+        self.sort_context = None
+        self.search_context = None
 
     def addLine(self, line):
         self.lines.append(line)
