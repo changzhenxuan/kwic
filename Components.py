@@ -30,9 +30,9 @@ class KwicMainWindow(QtWidgets.QMainWindow):#继承QMainWindow
         self.output_plaintext = ''
         #算法设置
         self.sort_rule = self.setting_dialog.ui.comboBox_sort.currentText()
-        print(self.sort_rule)
+        print("当前排序算法: "+self.sort_rule)
         self.search_rule = self.setting_dialog.ui.comboBox_search.currentText()
-        print(self.search_rule)
+        print("当前搜索算法: "+self.search_rule)
         
     def ui_ButtonActivate(self):
         self.ui.pushButton_cyclicshift.clicked.connect(self.cyclicShift)
