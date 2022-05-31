@@ -99,6 +99,7 @@ class KwicMainWindow(QtWidgets.QMainWindow):#继承QMainWindow
         self.ui.plainTextEdit_output.setPlainText(self.cyclicshift_text.toString())
 
     def sort(self):
+        """对循环移位后的文本(cyclicShift_text)进行排序"""
         if self.cyclicshift_text.toString() == '':
             self.cyclicShift()
 
@@ -108,10 +109,13 @@ class KwicMainWindow(QtWidgets.QMainWindow):#继承QMainWindow
         self.ui.plainTextEdit_output.setPlainText(self.cyclicshift_text.toString())
 
     def search(self):
+        # 获取关键字
         keywords = re.split(r'[ ]+',self.ui.lineEdit_keywords.text())
-
+        # 读取当前搜索规则
         self.search_rule = self.setting_dialog.ui.comboBox_search.currentText()
+        # 设置搜索规则
         self.cyclicshift_text.setSearchRule(self.search_rule)
+        # 搜索
         searched_lines = self.cyclicshift_text.search(keywords)
 
         self.searched_text.lines = searched_lines
